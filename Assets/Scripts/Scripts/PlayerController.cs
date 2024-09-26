@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 //Devin, 2024/03/02
 //Handles all player movement as well as checking when the player lives reach zero. 
@@ -10,6 +11,13 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 3;
     private int currentHealth;
     private Rigidbody2D rb;
+
+    // *** New Dash Feature Variables ***
+    public float dashSpeed = 8f; // Speed during dash
+    public float dashTime = 0.2f; // Duration of the dash
+    private bool isDashing = false; // Is the player dashing?
+    private bool canDash = true; // Can the player dash?
+    private float dashCooldown = 1f; // Time before dash is available again
 
     void Start()
     {
@@ -27,6 +35,12 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+
+        // *** Dash Input ***
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     void Jump() //Claculates player jump
@@ -35,6 +49,28 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+    }
+
+    // *** New Dash Function ***
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0; // Disable gravity during dash
+
+        Vector2 dashDirection = new Vector2(Input.GetAxisRaw("Horizontal"), 0).normalized;
+        rb.velocity = dashDirection * dashSpeed;
+
+        yield return new WaitForSeconds(dashTime);
+
+        rb.velocity = new Vector2(0, rb.velocity.y); // Stop horizontal movement after dash
+        rb.gravityScale = originalGravity; // Restore gravity
+
+        isDashing = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
     public void TakeDamage(int damage)
