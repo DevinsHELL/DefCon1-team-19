@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
 
 
         Vector2 dashDirection = new Vector2(Input.GetAxisRaw("Horizontal"), 0).normalized;
+
         moveSpeed = 0;
 
         dashSpeed = 20;
