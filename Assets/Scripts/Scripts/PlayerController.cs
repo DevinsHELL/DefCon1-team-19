@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private bool canDash = true; // Can the player dash?
     private float dashCooldown = 1f; // Time before dash is available again
 
+
+    [SerializeField] private TrailRenderer tr;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,6 +30,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         Vector2 movement = new Vector2(moveHorizontal, 0f) * moveSpeed;
         rb.velocity = new Vector2(movement.x, rb.velocity.y);
@@ -60,10 +69,21 @@ public class PlayerController : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0; // Disable gravity during dash
 
+
         Vector2 dashDirection = new Vector2(Input.GetAxisRaw("Horizontal"), 0).normalized;
+        moveSpeed = 0;
+
+        dashSpeed = 20;
+
         rb.velocity = dashDirection * dashSpeed;
 
+        tr.emitting = true;
+
         yield return new WaitForSeconds(dashTime);
+
+        moveSpeed = 8; dashSpeed = 0;
+
+        tr.emitting = false;
 
         rb.velocity = new Vector2(0, rb.velocity.y); // Stop horizontal movement after dash
         rb.gravityScale = originalGravity; // Restore gravity
@@ -91,4 +111,6 @@ public class PlayerController : MonoBehaviour
     {
         return currentHealth;
     }
+
+ 
 }
