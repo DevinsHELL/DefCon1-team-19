@@ -11225,7 +11225,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.5
   m_MaskInteraction: 0
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
   m_ApplyActiveColorSpace: 1
 --- !u!1 &369785936
 GameObject:
@@ -13004,6 +13004,7 @@ MonoBehaviour:
   maxHealth: 3
   dashSpeed: 8
   dashTime: 0.2
+  tr: {fileID: 265850514}
 --- !u!1 &920918753
 GameObject:
   m_ObjectHideFlags: 0
