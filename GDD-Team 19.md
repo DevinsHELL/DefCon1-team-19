@@ -59,6 +59,13 @@ Using my premade player controller as a base for the dash. It is kind of floaty 
 [**How To Install and Use Git LFS to Version Control Large File Projects Files (youtube.com)**](https://www.youtube.com/watch?v=judfGU0f6QU)
 
 [**PLAYER DASH ABILITY in UNDER 1 MINUTE\! Unity 2D Tutorial (youtube.com)**](https://www.youtube.com/watch?v=tH57EInEb58)**\- used as a guideline for how to get the dash started**
+ https://blog.native-instruments.com/video-game-sound-design/ (how to design game audio)
+
+ https://www.youtube.com/watch?v=Kux_LvRl57U  (how to make sound effects)
+
+ https://teliute.org/linux/Teauda/index.html (how to use audacity tutorial)
+
+ https://www.youtube.com/watch?v=zTHhwvTJyMU (super mario game sound )
 
 **Asset packs (Unity Asset store):**
 
