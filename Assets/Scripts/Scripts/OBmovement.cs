@@ -7,6 +7,7 @@ public class Mover : MonoBehaviour
 
     void Start()
     {
+        // using a built in unity function that will call Changedircetion repeatedly 
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("ChangeDirection", 0, 2f); // Change direction every 2 seconds
     }
