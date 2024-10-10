@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
     public int maxHealth = 3;
-    private int currentHealth;
+    public static int currentHealth;
     private Rigidbody2D rb;
 
     // *** New Dash Feature Variables ***
