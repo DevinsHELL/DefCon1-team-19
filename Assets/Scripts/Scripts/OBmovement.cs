@@ -1,26 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class OBmovement : MonoBehaviour
+public class Mover : MonoBehaviour
 {
-    public float moveSpeed = 3.5f;
+    public float moveSpeed = 5f;
     private Rigidbody2D rb;
-    
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        InvokeRepeating("ChangeDirection", 0, 2f); // Change direction every 2 seconds
     }
 
-    // Update is called once per frame
-    void Update()
+    void ChangeDirection()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
-
-        Vector2 movement = new Vector2(moveX, moveY)* moveSpeed;
-        rb.velocity = movement;
+        // Randomize movement direction
+        Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        rb.velocity = randomDirection * moveSpeed;
     }
 }
