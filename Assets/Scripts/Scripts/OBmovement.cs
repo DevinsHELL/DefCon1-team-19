@@ -7,7 +7,7 @@ public class Mover : MonoBehaviour
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     public PlayerController pc;
-    public static int currentLives = 3;
+    public static int currentLives = 3; //redundant lives counter
     
 
     void Start()
@@ -26,6 +26,15 @@ public class Mover : MonoBehaviour
             moveSpeed = moveSpeed + 0.001f;
             WaitForSeconds waitForSeconds = new WaitForSeconds(3f);
         }
+
+        if (moveSpeed > 18)
+        {
+            WaitForSeconds waitForSeconds = new WaitForSeconds(1.5f);
+            moveSpeed = 5;
+            currentLives = currentLives - 1;
+        }
+       // adds a cycle which limits the movement speed increase once the speed reaches 18 using a internal "lives" counter that is seperate from the player
+       // I found that the longer i let the speed of the enemy increase the more sparaticly the movement shifts become. This lead to the enemy either flying across the map or flippinf itself upside down
     }
     void ChangeDirection()
     {
