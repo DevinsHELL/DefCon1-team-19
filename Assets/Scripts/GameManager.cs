@@ -5,7 +5,7 @@ using UnityEngine.UI;
 //Deals with the timer and killing the player when the time runs out. It also handles moving the player on death top the loss screen and ending the game
 public class GameManager : MonoBehaviour
 {
-    public float timerDuration = 60f; // Duration of the timer in seconds
+    public float timerDuration = 100f; // Duration of the timer in seconds
     private float timer;
     private bool isTimerRunning = false;
 

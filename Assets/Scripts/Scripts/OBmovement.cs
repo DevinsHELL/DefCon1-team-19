@@ -23,11 +23,11 @@ public class Mover : MonoBehaviour
         Debug.Log("Player's current lives: " + currentLives);
         if (currentLives > 0)
         {
-            moveSpeed = moveSpeed + 0.001f;
+            moveSpeed = moveSpeed + 0.002f;
             WaitForSeconds waitForSeconds = new WaitForSeconds(3f);
         }
 
-        if (moveSpeed > 18)
+        if (moveSpeed > 20)
         {
             WaitForSeconds waitForSeconds = new WaitForSeconds(1.5f);
             moveSpeed = 5;
