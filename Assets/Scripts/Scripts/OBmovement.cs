@@ -16,15 +16,15 @@ public class Mover : MonoBehaviour
         // using a built in unity function that will call Changedircetion repeatedly 
         pc = FindObjectOfType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
-        InvokeRepeating("ChangeDirection", 0, 2f); // Change direction every 2 seconds
+        InvokeRepeating("ChangeDirection", 0, 3f); // Change direction every 2 seconds
     }
     private void Update()
     {
         Debug.Log("Player's current lives: " + currentLives);
         if (currentLives > 0)
         {
-            moveSpeed = moveSpeed + 0.01f;
-            WaitForSeconds waitForSeconds = new WaitForSeconds(2f);
+            moveSpeed = moveSpeed + 0.001f;
+            WaitForSeconds waitForSeconds = new WaitForSeconds(3f);
         }
     }
     void ChangeDirection()
