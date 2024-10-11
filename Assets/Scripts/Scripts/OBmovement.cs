@@ -24,7 +24,7 @@ public class Mover : MonoBehaviour
         if (currentLives > 0)
         {
             moveSpeed = moveSpeed + 0.01f;
-            WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+            WaitForSeconds waitForSeconds = new WaitForSeconds(2f);
         }
     }
     void ChangeDirection()
